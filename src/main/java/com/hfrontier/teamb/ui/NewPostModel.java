@@ -2,6 +2,8 @@ package com.hfrontier.teamb.ui;
 
 import javax.validation.constraints.NotEmpty;
 
+import lombok.Data;
+@Data
 public class NewPostModel {
 	/**
 	 * ユーザーID
@@ -17,6 +19,7 @@ public class NewPostModel {
 	 * １〜２００文字以内
 	 */
 	@NotEmpty(message = "必須入力です")
+
 	private String comment;
 
 }
