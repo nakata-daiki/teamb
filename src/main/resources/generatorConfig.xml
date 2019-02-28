@@ -2,29 +2,59 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <classPathEntry
-        location="/Users/HFC033/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13.jar" />
+        location="/Users/mobile004/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13-sources.jar" />
     <context id="context1">
 
+<!--     JDBCの設定です (1) -->
         <jdbcConnection
             driverClass="com.mysql.jdbc.Driver"
-            connectionURL="jdbc:mysql://158.85.223.215/fujisawa"
+            connectionURL="jdbc:mysql://158.85.223.215/teamb_bbs"
             userId="dakoku"
             password="WLwK5Hvg%"
         />
+
+<!--     自動生成するエンティティの設定です (2) -->
         <javaModelGenerator
-            targetPackage="com.sample.sample.repository"
-            targetProject="sample"
+            targetPackage="com.hfrontier.teamb.repository"
+            targetProject="teamb"
         />
         <sqlMapGenerator
-            targetPackage="com.sample.sample.mapper"
-            targetProject="sample"
+            targetPackage="com.hfrontier.teamb.mapper"
+            targetProject="teamb"
         />
         <javaClientGenerator
-            targetPackage="com.sample.sample.repository"
-            targetProject="sample"
+            targetPackage="com.hfrontier.teamb.mapper"
+            targetProject="teamb"
             type="XMLMAPPER"
         />
 
-        <table schema="fujisawa" tableName="test" />
+<!--     生成対象のテーブルです（3) -->
+        <table
+        	   tableName="users"
+               schema="teamb_bbs"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="false"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               selectByExampleQueryId="false"
+               modelType="flat">
+        </table>
+        <table schema="teamb_bbs"
+        		tableName="comments"
+               enableInsert="true"
+               enableSelectByPrimaryKey="true"
+               enableSelectByExample="false"
+               enableUpdateByPrimaryKey="true"
+               enableUpdateByExample="false"
+               enableDeleteByPrimaryKey="true"
+               enableDeleteByExample="false"
+               enableCountByExample="false"
+               selectByExampleQueryId="false"
+               modelType="flat">
+        </table>
     </context>
 </generatorConfiguration>
