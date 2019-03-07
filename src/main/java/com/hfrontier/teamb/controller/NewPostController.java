@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,11 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hfrontier.teamb.common.constant.Constant;
 import com.hfrontier.teamb.ui.NewPostModel;
 
-import jp.co.hfrontier.dakoku.common.constant.Constant;
-import jp.co.hfrontier.dakoku.ui.LoginModel;
-
+@Controller
 public class NewPostController {
 
 	@Autowired
@@ -41,4 +41,14 @@ public class NewPostController {
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-}
+        /**
+         * バリデーションチェックを行うメソッド
+         */
+//		public static void doValidationCheck(){
+		model.setViewName("HTML/newpost");
+		return model;
+
+		}
+
+	}
+
