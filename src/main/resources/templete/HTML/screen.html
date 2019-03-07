@@ -1,0 +1,250 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<link href="/css/dakoku_css.css" rel="stylesheet" id="bootstrap-css">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<title>勤怠</title>
+
+<script type="text/javascript">
+	// Geolocation APIに対応している
+	if (navigator.geolocation) {
+		alert("この端末では位置情報が取得できます");
+		getPosition();
+		// Geolocation APIに対応していない
+	} else {
+		alert("この端末では位置情報が取得できません");
+	}
+
+	timerID = setInterval('clock()', 500); //0.5秒毎にclock()を実行
+
+	function clock() {
+		document.getElementById("view_clock").innerHTML = getNow();
+		document.getElementById("year").value = setyear();
+		document.getElementById("month").value = setmonth();
+		document.getElementById("day").value = setday();
+		document.getElementById("sdate").value = setsDate();
+		document.getElementById("stime").value = setsTime();
+		document.getElementById("edate").value = seteDate();
+		document.getElementById("etime").value = seteTime();
+	}
+
+	// 現在地取得処理
+	function getPosition() {
+		// 現在地を取得
+		navigator.geolocation.getCurrentPosition(
+		// 取得成功した場合
+		function(position) {
+			var lat = position.coords.latitude;
+			var lon = position.coords.longitude;
+			document.getElementById("latitude").value = lat;
+			document.getElementById("longitude").value = lon;
+		},
+		// 取得失敗した場合
+		function(error) {
+			switch (error.code) {
+			case 1: //PERMISSION_DENIED
+				alert("位置情報の利用が許可されていません");
+				break;
+			case 2: //POSITION_UNAVAILABLE
+				alert("現在位置が取得できませんでした");
+				break;
+			case 3: //TIMEOUT
+				alert("タイムアウトになりました");
+				break;
+			default:
+				alert("その他のエラー(エラーコード:" + error.code + ")");
+				break;
+			}
+		});
+	}
+
+	function getTime() {
+		document.getElementById("edate").value = seteDate();
+		document.getElementById("etime").value = seteTime();
+		getPosition();
+	}
+
+	function getNow() {
+		var now = new Date();
+		var year = now.getFullYear();
+		var mon = now.getMonth() + 1; //１を足すこと
+		var day = now.getDate();
+		var you = now.getDay(); //曜日(0～6=日～土)
+		var hour = now.getHours();
+		var min = now.getMinutes();
+		var sec = now.getSeconds();
+
+		var toTwoDigits = function(num, digit) {
+			//String型へ変換
+			num += ''
+			//今日の分秒がそれぞれの桁数より小さい場合0を頭に足す
+			if (num.length < digit) {
+				num = '0' + num
+			}
+			return num
+		}
+		var twosec = toTwoDigits(sec, 2)
+		var twomin = toTwoDigits(min, 2)
+		//曜日の選択肢
+		var youbi = new Array("日", "月", "火", "水", "木", "金", "土");
+		//出力用
+		var s = year + "年" + mon + "月" + day + "日 (" + youbi[you] + ")<br>"
+				+ hour + "時" + twomin + "分" + twosec + "秒";
+		return s;
+	}
+
+	function setyear() {
+		var now = new Date();
+		var year = now.getFullYear();
+		return year;
+	}
+
+	function setmonth() {
+		var now = new Date();
+		var month = now.getMonth() + 1; //１を足すこと
+		//numは年・月・日　digitはそれぞれの桁数
+		var toTwoDigits = function(num, digit) {
+			//String型へ変換
+			num += ''
+			//今日の年月日がそれぞれの桁数より小さい場合0を頭に足す
+			if (num.length < digit) {
+				num = '0' + num
+			}
+			return num
+		}
+		var mm = toTwoDigits(month, 2)
+		return mm;
+	}
+	function setday() {
+		var now = new Date();
+		var day = now.getDate();
+		//numは年・月・日　digitはそれぞれの桁数
+		var toTwoDigits = function(num, digit) {
+			//String型へ変換
+			num += ''
+			//今日の年月日がそれぞれの桁数より小さい場合0を頭に足す
+			if (num.length < digit) {
+				num = '0' + num
+			}
+			return num
+		}
+		var dd = toTwoDigits(day, 2)
+		return dd;
+	}
+	function setsDate() {
+		var now = new Date();
+		var year = now.getFullYear();
+		var mon = now.getMonth() + 1; //１を足すこと
+		var day = now.getDate();
+
+		var toTwoDigits = function(num, digit) {
+			//String型へ変換
+			num += ''
+			//今日の年月日がそれぞれの桁数より小さい場合0を頭に足す
+			if (num.length < digit) {
+				num = '0' + num
+			}
+			return num
+		}
+
+		var mm = toTwoDigits(mon, 2)
+		var dd = toTwoDigits(day, 2)
+
+		var date = year + "-" + mm + "-" + dd;
+		return date;
+	}
+	function setsTime() {
+		var now = new Date();
+		var hour = now.getHours();
+		var min = now.getMinutes();
+		var sec = now.getSeconds();
+		var time = hour + ":" + min + ":" + sec;
+		return time;
+	}
+
+	function seteDate() {
+		var now = new Date();
+		var year = now.getFullYear();
+		var mon = now.getMonth() + 1; //１を足すこと
+		var day = now.getDate();
+
+		var toTwoDigits = function(num, digit) {
+			//String型へ変換
+			num += ''
+			//今日の年月日がそれぞれの桁数より小さい場合0を頭に足す
+			if (num.length < digit) {
+				num = '0' + num
+			}
+			return num
+		}
+
+		var mm = toTwoDigits(mon, 2)
+		var dd = toTwoDigits(day, 2)
+
+		var date = year + "-" + mm + "-" + dd;
+		return date;
+	}
+	function seteTime() {
+		var now = new Date();
+		var hour = now.getHours();
+		var min = now.getMinutes();
+		var sec = now.getSeconds();
+		var time = hour + ":" + min + ":" + sec;
+		return time;
+	}
+
+</script>
+</head>
+
+<body>
+<div id="header">
+		<h1>
+			<a href="/login" class="headerFontColor">HFC打刻システム</a>
+		</h1>
+		<div class="logout">
+			<input type="button" class="square_btn3"
+				onClick="location.href='/logout'" value="ログアウト">
+		</div>
+	</div>
+	<div class="h4"
+		th:text=${attendanceModel.userfName+attendanceModel.userlName}+さん></div>
+
+	<div th:if="${errorMap}">
+		<div class="errorDisplay errorForm">
+		<p class="error">出退勤エラー</p>
+			<div th:each="message:${message}" th:if="message"></div>
+			<ul th:each="error:${errorMap}">
+				<li th:utext=${error.value}></li>
+			</ul>
+		</div>
+	</div>
+	<div class="container">
+		<div class="time">
+			<h2>
+				<span id="view_clock"></span>
+			</h2>
+		</div>
+		<div class="attendance">
+			<form method=post th:action="@{/dakoku}">
+				<input type="hidden" name="userNo" value="" th:field=${attendanceModel.userNo}>
+				<input type="hidden" id="year" name="year" value="">
+				<input type="hidden" id="month" name="month" value="">
+				<input type="hidden" id="day" name="day" value="">
+				<input type="hidden" id="sdate" name="sDate" value="">
+				<input type="hidden" id="stime" name="sTime" value="">
+				<input type="hidden" id="edate" name="eDate" value="">
+				<input type="hidden" id="etime" name="eTime" value="">
+				<input type="hidden" name="userName" value="">
+				<input type="hidden" id="latitude" name="latitude" value="">
+				<input type="hidden" id="longitude" name="longitude" value="">
+				<button type="submit" class="square_btn" name="start" onclick="getPosition();">出勤</button>
+				<button type="submit" class="square_btn2" name="end" onclick="getTime();">退勤</button>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
