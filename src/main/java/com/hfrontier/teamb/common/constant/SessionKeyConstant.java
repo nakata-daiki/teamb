@@ -1,6 +1,9 @@
 package com.hfrontier.teamb.common.constant;
 
-public final class SessionKeyConst {
+
+public final class SessionKeyConstant {
+
+
 	private SessionKeyConstant() {
 
 	}
