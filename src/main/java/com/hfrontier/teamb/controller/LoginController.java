@@ -1,7 +1,10 @@
 package com.hfrontier.teamb.controller;
 
+import java.util.Objects;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
@@ -16,6 +19,12 @@ import com.hfrontier.teamb.ui.LoginModel;
 
 @Controller
 public class LoginController {
+
+	public final String LOGIN_USER_ID = "LOGIN_USER_ID";
+	public final String LOGIN_PASSWORD = "LOGIN_PASSWORD";
+	public final String ERROR_MESSAGE = "ERROR_MESSAGE";
+	public final String INPUT_USER_ID = "INPUT_USER_ID";
+	public final String INPUT_PASSWORD = "INPUT_PASSWORD";
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@RequestMapping(value = {"Regist/Login"}, method = RequestMethod.GET)
@@ -36,12 +45,25 @@ public class LoginController {
 			HttpServletResponse response) {
 
 		// ログイン状態チェック
+		HttpSession session = request.getSession();
+		if (!Objects.isNull(session.getAttribute(LOGIN_USER_ID)))  {
+			model.setViewName("/to-ko-itiran");
 
+		}
 		// エラーメッセージがあるならモデルにセット
-
+		if (!Objects.isNull(session.getAttribute(ERROR_MESSAGE))) {
+			loginModel.setMessage(ERROR_MESSAGE);
+			session.removeAttribute(ERROR_MESSAGE);
+		}
 		// セッションにログイン情報があるならモデルにセット
-
+		if (!Objects.isNull(session.getAttribute(INPUT_USER_ID))) {
+			loginModel.setUserId(INPUT_USER_ID);
+		}
+		if (!Objects.isNull(session.getAttribute(INPUT_PASSWORD))) {
+			loginModel.setPassword(INPUT_PASSWORD);
+		}
 		// 画面表示処理
+
 
 
 		return model;
