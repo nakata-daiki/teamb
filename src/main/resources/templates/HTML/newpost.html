@@ -19,11 +19,11 @@
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">HFC BBS</a>
         <div class="navbar-right">
-        <form action="/logout" method="post">
-          <span class="navbar-text text-light" th:text=${newPostModel.userID}> </span>
+        <form action="/logout" method="post" th:action="@{/logout}">
+          <span class="navbar-text text-light" th:text="${newPostModel.userID}"></span>
           <button type="button" class="btn btn-sm ml-2 btn-outline-light">ログアウト</button>
+         </form>
         </div>
-        </form>
       </nav>
       <!-- header end -->
       <!-- containts start -->
@@ -32,7 +32,7 @@
           <div class="row">
             <div class="col-3">
               <div class="card" style="background-color: rgba(0,0,0,0.5);">
-                <h5 class="card-header text-light">コメント編集</h5>
+                <h5 class="card-header text-light">新規投稿</h5>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item list-group-item-action bg-transparent">
                     <a href="board.html"><span class="btn btn-outline-warning btn-block">BBSへ戻る</span></a>
@@ -41,34 +41,27 @@
               </div>
             </div>
             <div class="col-9">
-
               <div class="card" style="background-color: rgba(0,0,0,0.5);overflow-y: scroll;height: 80vh;">
                 <div class="card-body">
-                 <div th:if="${errorMap}">
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <div th:each="message:${message}" th:if="message"></div>
-			        <ul th:each="error:${errorMap}">
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert" th:if="${errorMap}">
+                   <ul th:each="error:${errorMap}">
 			          	<li th:utext=${error.value}></li>
 			        </ul>
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                   </div>
                   </div>
-                  <form method="post" th:action="@{/newPostRegist}">
+                  <form method="post" th:action="@{/newPostRegist}" >
                     <div class="form-group row">
                       <label for="staticUser" class="col-sm-2 col-form-label">
-                        <span class="text-light"th:text=${newPostModel.userID}>></span>
+                        <span class="text-light">UserId</span>
                       </label>
-                      <div class="col-sm-10">
-                        <input type="text" readonly class="form-control" id="staticUser" value="">
+                      <div class="col-sm-10" th:text="${newPostModel.userID}+さん">
+                        <input type="text" readonly class="form-control" id="staticUser" value="" th:field="${newPostModel.userID}"  >
                       </div>
                     </div>
-                    <div class="form-group" >
+                    <div class="form-group">
                       <label for="formControlTextarea1">
                         <span class="text-light">コメント</span>
                       </label>
-                      <input name="userID" type ="hidden" th:field="${RegistModel.comment}>
-                      <input name ="comment" type ="text" maxlength ="200" th:field="${RegistModel.comment}"textarea class="form-control" id="comment" rows="4" placeholder="200文字以内で入力してください"></textarea>
+                      <textarea class="form-control" id="formControlTextarea1"  maxlength="200" rows="4" th:field="${newPostModel.comment}" th:text="${newPostModel.comment}" placeholder="全角で２００文字以内で入力してください"></textarea>
                     </div>
                     <button type="submit" class="btn btn-outline-warning">送信する</button>
                   </form>
