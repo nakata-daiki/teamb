@@ -2,7 +2,7 @@
 <!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
     <classPathEntry
-        location="/Users/mobile004/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13-sources.jar" />
+        location="/Users/HFC019/.m2/repository/mysql/mysql-connector-java/8.0.13/mysql-connector-java-8.0.13-sources.jar" />
     <context id="context1">
 
 <!--     JDBCの設定です (1) -->
@@ -30,7 +30,7 @@
 
 <!--     生成対象のテーブルです（3) -->
         <table
-        	   tableName="users"
+        	   tableName="members"
                schema="teamb_bbs"
                enableInsert="true"
                enableSelectByPrimaryKey="true"
@@ -43,18 +43,6 @@
                selectByExampleQueryId="false"
                modelType="flat">
         </table>
-        <table schema="teamb_bbs"
-        		tableName="comments"
-               enableInsert="true"
-               enableSelectByPrimaryKey="true"
-               enableSelectByExample="false"
-               enableUpdateByPrimaryKey="true"
-               enableUpdateByExample="false"
-               enableDeleteByPrimaryKey="true"
-               enableDeleteByExample="false"
-               enableCountByExample="false"
-               selectByExampleQueryId="false"
-               modelType="flat">
-        </table>
+
     </context>
 </generatorConfiguration>
