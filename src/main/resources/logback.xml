@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+   <!-- 共通設定 -->
+   <property name="LOG_FILE_PATH" value="src/main/resources/logs/" />
+   <property name="LOG_PATTERN" value="[%d] [%t] [-%5p] [%-40.40logger{39}] : %m%n" />
+
+   <!-- 標準出力 -->
+   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+       <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+       <encoder>
+           <pattern>${LOG_PATTERN}</pattern>
+       </encoder>
+   </appender>
+
+   <!-- ファイルログ -->
+   <!-- マスキング -->
+   <appender name="INFO_FILE"
+       class="ch.qos.logback.core.FileAppender">
+       <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>INFO</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+       <encoder>
+           <pattern>${LOG_PATTERN}</pattern>
+       </encoder>
+       <!-- ログファイル名 -->
+       <file>${LOG_FILE_PATH}info.log</file>
+   </appender>
+
+   <appender name="DEBUG_FILE"
+       class="ch.qos.logback.core.FileAppender">
+       <encoder>
+           <pattern>${LOG_PATTERN}</pattern>
+       </encoder>
+       <!-- ログファイル名 -->
+       <file>${LOG_FILE_PATH}debug.log</file>
+   </appender>
+
+   <!-- ロガー -->
+   <root level="INFO">
+       <appender-ref ref="STDOUT" />
+       <appender-ref ref="INFO_FILE" />
+   </root>
+
+   <root level="DEBUG">
+       <appender-ref ref="DEBUG_FILE" />
+   </root>
+
+</configuration>

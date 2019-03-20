@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- incloud jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- incloud bootstrap files from cdn-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <link href="font/css/open-iconic-bootstrap.css" rel="stylesheet">
+    <title>hfc lab board</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="fruid-container">
+      <!-- header start -->
+      <nav class="navbar navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">HFC BBS</a>
+        <div class="navbar-right">
+          <span class="navbar-text text-light">hogehoge さん</span>
+          <button type="button" class="btn btn-sm ml-2 btn-outline-light">ログアウト</button>
+        </div>
+      </nav>
+      <!-- header end -->
+      <!-- containts start -->
+      <div class="jumbotron jumbotron-extend board">
+        <div class="container-fluid jumbotron-container">
+          <div class="row">
+            <div class="col-3">
+              <div class="card" style="background-color: rgba(0,0,0,0.5);">
+                <h5 class="card-header text-light">BBS</h5>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item list-group-item-action bg-transparent">
+                    <a href="edit.html"><span class="btn btn-outline-warning btn-block">コメント登録</span></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-9">
+              <div class="card" style="background-color: rgba(0,0,0,0.5);overflow-y: scroll;height: 80vh;">
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-transparent">
+                      <div class="balloon2-left">
+                        <span>No.1</span>
+                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目] </span>
+                        <hr>
+                        <p>こんにちは。これは例です。</p>
+                      </div>
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                      <div class="balloon2-left">
+                        <span>No.2</span>
+                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
+                        <hr>
+                        <p>こんにちは。これは例です。こんにちは。これは例です。こんにちは。これは例です。こんにちは。これは例です。
+                        </p>
+                      </div>
+                    </li>
+                    <li class="list-group-item bg-transparent text-right">
+                      <div class="balloon2-right">
+                        <div class="text-left">
+                          <span>No.3</span>
+                          <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
+                        </div>
+                        <hr>
+                        <p class="text-left">
+                          こんにちは。こんにちは。これは例です。これは例です。
+                          <br>
+                          れいです
+                        </p>
+                        <hr>
+                        <button type="button" class="btn btn-outline-info btn-sm">編集</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm">削除</button>
+                      </div>
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                      <div class="balloon2-left">
+                        <span>No.4</span>
+                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
+                        <hr>
+                        <p>こんにちは。これは例です。</p>
+                      </div>
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                      <div class="balloon2-left">
+                        <span>No.5</span>
+                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
+                        <hr>
+                        <p>こんにちは。これは例です。</p>
+                      </div>
+                    </li>
+                    <li class="list-group-item bg-transparent">
+                      <div class="balloon2-left">
+                        <span>No.5</span>
+                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
+                        <hr>
+                        <p>こんにちは。これは例です。</p>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- containts end -->
+      <!-- footer start -->
+      <footer class="text-right bg-dark fixed-bottom">
+        <span class="text-light text-muted small" style="padding-right:1em">@Created by hfc-lab, Designed by system-lab S.Fujisawa</span>
+      </footer>
+      <!-- footer end -->
+    </div>
+  </body>
+</html>
