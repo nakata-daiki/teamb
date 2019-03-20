@@ -1,5 +1,7 @@
 package com.hfrontier.teamb.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -57,5 +59,7 @@ public interface CommentsMapper {
      * @mbg.generated Mon Oct 10 10:54:49 JST 2018
      */
 	int insertComment(String userID,int countLog,String comment);
+
+	List<Comments> selectAll();
 
 }
