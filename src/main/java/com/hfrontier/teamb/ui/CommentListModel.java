@@ -11,7 +11,7 @@ public class CommentListModel {
 
 	private List<CommentsData> list;
 
-	public class CommentsData extends Comments {
+	public static class CommentsData extends Comments {
 		private boolean myComment;
 
 		public boolean isMyComment() {
@@ -22,6 +22,14 @@ public class CommentListModel {
 			this.myComment = myComment;
 		}
 
+	}
+
+	public List<CommentsData> getList() {
+		return list;
+	}
+
+	public void setList(List<CommentsData> list) {
+		this.list = list;
 	}
 
 }
