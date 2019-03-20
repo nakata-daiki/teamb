@@ -15,10 +15,12 @@ import com.hfrontier.teamb.ui.CommentListModel.CommentsData;
 
 import lombok.Data;
 
+import lombok.Data;
+
 @Data
 @Service
 @Configuration
-@Transactional
+
 public class CommentsService {
 	@Autowired
 	private CommentsMapper commentsMapper;
@@ -30,6 +32,7 @@ public class CommentsService {
 	 * @return countLog
 	 * @throws UnknownHostException
 	 */
+	@Transactional
 	public int getCountLog(String userID) throws UnknownHostException {
 		int countLog = 0;
 
@@ -42,7 +45,13 @@ public class CommentsService {
 	}
 
 	public void insertComment(String userID,int countLog,String comment){
-		int insertNumber = 0;
+		Comments comments = new Comments();
+		comments.setComment(comment);
+		comments.setCountLog(countLog);
+		comments.setUserId(userID);
+        insert(comments);
+
+
 
 		//レコードの登録が完了したら1が返るようにしたい
 
@@ -53,6 +62,7 @@ public class CommentsService {
 	 *
 	 * @param comments
 	 */
+	@Transactional
 	public void insert(Comments comments) {
 		commentsMapper.insert(comments);
 	}
