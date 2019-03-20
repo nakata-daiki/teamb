@@ -35,9 +35,9 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <!--投稿回数の取得  -->
-  <select id="getCountLog">
-  select MAX(count_log) AS投稿回数<include refid="Base_Column_List" />
-  from comments where = #{user_id ,jdbcType=VARCHAR}
+  <select id="getCountLog" parameterType="map" resultType="java.lang.Integer">
+  select count(*)
+  from comments where user_id = #{userID ,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     <!--
@@ -58,7 +58,7 @@
       comment, delete_flag, created_at,
       updated_at)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, #{countLog,jdbcType=INTEGER},
-      #{comment,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR}, #{createdAt,jdbcType=TIMESTAMP},
+      #{comment,jdbcType=VARCHAR}, #{deleteFlag,jdbcType=CHAR},now() ,
       #{updatedAt,jdbcType=TIMESTAMP})
   </insert>
   <!-- コメント登録用SQL-->
