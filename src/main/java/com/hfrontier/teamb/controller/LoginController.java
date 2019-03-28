@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hfrontier.teamb.service.LoginService;
 import com.hfrontier.teamb.ui.LoginModel;
 
 @Controller
@@ -25,6 +28,9 @@ public class LoginController {
 	public final String ERROR_MESSAGE = "ERROR_MESSAGE";
 	public final String INPUT_USER_ID = "INPUT_USER_ID";
 	public final String INPUT_PASSWORD = "INPUT_PASSWORD";
+
+	@Autowired
+	private ApplicationContext context;
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	@RequestMapping(value = {"Regist/Login"}, method = RequestMethod.GET)
@@ -63,9 +69,7 @@ public class LoginController {
 			loginModel.setPassword(INPUT_PASSWORD);
 		}
 		// 画面表示処理
-
-
-
+		model.addObject(loginModel);
 		return model;
 	}
 
@@ -87,11 +91,17 @@ public class LoginController {
 			HttpServletRequest request,
 			HttpServletResponse response) {
 
+		LoginService loginService = context.getBean(LoginService.class);
+
 		// 入力内容のチェック（ID、パスワード）
 
+
+
 		// ログイン処理
+		loginService.login(loginModel.getUserId(), loginModel.getPassword());
 
 		// 画面遷移処理
+
 
 		return model;
 	}
@@ -114,9 +124,12 @@ public class LoginController {
 			HttpServletRequest request,
 			HttpServletResponse response) {
 
+		LoginService loginService = context.getBean(LoginService.class);
 		// 入力内容チェック（ID、パスワード）
 
+
 		// 登録処理
+		loginService.regist();
 
 		// 画面遷移処理（リダイレクト）
 

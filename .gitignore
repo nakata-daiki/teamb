@@ -88,3 +88,6 @@ gradle-app.setting
 
 logs/
 *.log
+
+
+target
