@@ -165,4 +165,10 @@
       updated_at = #{updatedAt,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="selectAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from comments
+    order by id
+  </select>
 </mapper>
