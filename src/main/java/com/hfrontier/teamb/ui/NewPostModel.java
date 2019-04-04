@@ -10,6 +10,7 @@ public class NewPostModel {
 	/**
 	 * ユーザーID
 	 */
+	@NotEmpty(message = "必須入力です")
 	private String userID;
 	/**
 	 * コメント １〜２００文字以内
@@ -18,19 +19,6 @@ public class NewPostModel {
 	@Size(min = 1, max = 200, message = "200文字以内で入力してください")
 	private String comment;
 
-	public void setUserID(String string) {
-		// TODO 自動生成されたメソッド・スタブ
 
-	}
-
-	public String getComment() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-
-	public String getUserID() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
 
 }

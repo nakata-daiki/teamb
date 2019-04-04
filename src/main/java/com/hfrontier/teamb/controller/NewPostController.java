@@ -60,14 +60,16 @@ public class NewPostController {
 			HttpServletRequest request, HttpServletResponse response) {
 
 		// セッションからusrIDを取得し、モデルにつめる
+		session.setAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA, "06073");
 		String userID = (String) session
 				.getAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA);
 		if (userID != null) {
-			newPostModel.setUserID("userID");
+			newPostModel.setUserID(userID);
 			model.setViewName("HTML/newpost");
 		} else {
 			// セッションからuserIDを取得できない場合はログイン画面に遷移
-			model.setViewName("HTML/login");
+			//model.setViewName("HTML/login");
+			model.setViewName("HTML/newpost");
 		}
 
 		model.addObject("newPostModel", newPostModel);
@@ -122,7 +124,7 @@ public class NewPostController {
 		} else {
 			// エラーがある場合は新規投稿画面を再描画する。
 			model.addObject("errorMap", errorMap);
-			model.addObject("registModel", newPostModel);
+			model.addObject("newPostModel", newPostModel);
 			model.setViewName("HTML/newpost");
 
 		}
@@ -156,10 +158,10 @@ public class NewPostController {
 		if (!Validator.judgeFullWidthCharacter(comment)) {
 			errorMap.put("comment", "コメントを全角で入力してください");
 		}
-		if (!Validator.checkPlatformDependentCharacters(comment)) {
-			errorMap.put("comment", "コメントに環境依存文字が使用されています");
-
-		}
+//		if (!Validator.checkPlatformDependentCharacters(comment)) {
+//			errorMap.put("comment", "コメントに環境依存文字が使用されています");
+//
+//		}
 
 		return errorMap;
 
