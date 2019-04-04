@@ -1,16 +1,28 @@
 package com.hfrontier.teamb.service;
 
 
+import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import com.hfrontier.teamb.mapper.UsersMapper;
-import com.hfrontier.teamb.repository.Users;
+import com.hfrontier.teamb.mapper.MembersMapper;
+import com.hfrontier.teamb.repository.Members;
 
+
+@Service
+@Scope("prototype")
+@Configuration
+@ConfigurationProperties(prefix = "login")
 public class LoginService {
 
+
 	@Autowired
-	private UsersMapper userMapper;
+	private MembersMapper membersMapper;
 
 	private final String ERROR_NOT_USER_ID = "ユーザーIDが入力されていません。";
 	private final String ERROR_NOT_PASSWORD = "パスワードが入力されていません。";
@@ -27,20 +39,29 @@ public class LoginService {
 	/**
 	 * ログイン処理
 	 */
-	public void login(String userId, String password) {
-		// DB接続s
+	public String login(String userId, String inputPass) {
+		// IDが空かどうか
+		if (!StringUtils.isEmpty(userId)) {
+			return "IDがない";
+		}
 
+		// 登録情報取得
+		Members members = membersMapper.selectByPrimaryKey(userId);
 
-		// 入力されたIDがDBにあるか
-		userMapper.selectByUserId(userId);
+		// 取得できたか
+		if (Objects.isNull(members)) {
+			return "登録されてない";
+		}
 
-
-
-		// IDに対応するパスワードが同じか
+		// パスワードが一致するか
+		if (!inputPass.equals(members.getPassword())) {
+			return "パスワードが違う";
+		}
 
 		// セッションに会員情報を保存
 
-		//
+		return null;
+
 	}
 
 	/**
@@ -49,10 +70,13 @@ public class LoginService {
 	public boolean regist(String userId, String password) {
 
 		// 入力されたIDがDBにあるか
-		Users users = userMapper.selectByUserId(userId);
+		Members resultMember = membersMapper.selectByPrimaryKey(userId);
 		// IDがDBにないならDBにIDとパスワードをインサート
-		if (StringUtils.isEmpty(users.getUsersId())) {
-			userMapper.insert(users);
+		if (Objects.isNull(resultMember)) {
+			Members member = new Members();
+			member.setId(userId);
+			member.setPassword(password);
+			membersMapper.insert(member);
 			return true;
 		} else {
 			return false;
@@ -72,7 +96,7 @@ public class LoginService {
 		// パスワード文字数超過
 		if (MAX_PASSWORD < password.length() || MIN_PASSWORD < password.length()) return ERROR_ORVER_PASSWORD;
 
-		return StringUtils.EMPTY;
+		return null;
 
 
 

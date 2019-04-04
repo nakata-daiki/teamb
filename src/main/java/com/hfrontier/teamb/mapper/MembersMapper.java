@@ -15,4 +15,6 @@ public interface MembersMapper {
 	 * @mbg.generated  Wed Mar 20 21:52:18 JST 2019
 	 */
 	int insertSelective(Members record);
+
+	Members selectByPrimaryKey(String userId);
 }
