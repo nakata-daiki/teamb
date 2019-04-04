@@ -78,6 +78,7 @@ public class CommentsService {
             //表示用のコメントに加工していく
             CommentsData cd = new CommentsData();
             BeanUtils.copyProperties(coment, cd);
+            //cd.setCreatedAt(coment.getCreatedAt());
             Object userId = session.getAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA);
             if(Objects.nonNull(userId)) cd.setMyComment(StringUtils.equals(coment.getUserId(), userId.toString()));
             list.add(cd);
