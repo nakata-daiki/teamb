@@ -33,13 +33,13 @@
             <div class="card" style="background-color: rgba(100,100,100,0.5);">
               <div class="card-body">
 
-              <th:block th:if="${model.errorMessage}">
+              <!-- /* <th:block th:if="${loginModel.errorMessage}">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
                   <a th:text="${model.errorMessage}"></a>
                 </div>
-                </th:block>
+                </th:block> */-->
 
-                <form action="@{LoginModel}" method="POST">
+                <form th:action="@{/registLogin}" method="POST">
                   <div class="form-group">
                     <label for="exampleFormControlInput1"><span class="text-light">ユーザーID</span></label>
                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="IDを入力してください">

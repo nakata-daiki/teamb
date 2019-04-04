@@ -1,7 +1,8 @@
 package com.hfrontier.teamb.service;
 
-
 import java.util.Objects;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -10,16 +11,15 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import com.hfrontier.teamb.common.constant.SessionKeyConstant;
 import com.hfrontier.teamb.mapper.MembersMapper;
 import com.hfrontier.teamb.repository.Members;
-
 
 @Service
 @Scope("prototype")
 @Configuration
 @ConfigurationProperties(prefix = "login")
 public class LoginService {
-
 
 	@Autowired
 	private MembersMapper membersMapper;
@@ -34,12 +34,11 @@ public class LoginService {
 	private final int MIN_USER_ID = 3;
 	private final int MIN_PASSWORD = 3;
 
-
-
 	/**
 	 * ログイン処理
 	 */
-	public String login(String userId, String inputPass) {
+	public String login(String userId, String inputPass,
+			HttpSession session) {
 		// IDが空かどうか
 		if (!StringUtils.isEmpty(userId)) {
 			return "IDがない";
@@ -54,12 +53,12 @@ public class LoginService {
 		}
 
 		// パスワードが一致するか
-		if (!inputPass.equals(members.getPassword())) {
+		if (members.getPassword().equals(inputPass)) {
 			return "パスワードが違う";
 		}
 
 		// セッションに会員情報を保存
-
+		session.setAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA, userId);
 		return null;
 
 	}
@@ -74,7 +73,7 @@ public class LoginService {
 		// IDがDBにないならDBにIDとパスワードをインサート
 		if (Objects.isNull(resultMember)) {
 			Members member = new Members();
-			member.setId(userId);
+			member.setUserId(userId);
 			member.setPassword(password);
 			membersMapper.insert(member);
 			return true;
@@ -88,18 +87,19 @@ public class LoginService {
 	 */
 	public String validationCheck(String userId, String password) {
 		// IDが空
-		if (StringUtils.isEmpty(userId)) return ERROR_NOT_USER_ID;
+		if (StringUtils.isEmpty(userId))
+			return ERROR_NOT_USER_ID;
 		// パスワードが空
-		if (StringUtils.isEmpty(password)) return ERROR_NOT_PASSWORD;
+		if (StringUtils.isEmpty(password))
+			return ERROR_NOT_PASSWORD;
 		// ID文字数超過
-		if (MAX_USER_ID < userId.length() || MIN_USER_ID < userId.length()) return ERROR_ORVER_USER_ID;
+		if (MAX_USER_ID < userId.length() || MIN_USER_ID < userId.length())
+			return ERROR_ORVER_USER_ID;
 		// パスワード文字数超過
-		if (MAX_PASSWORD < password.length() || MIN_PASSWORD < password.length()) return ERROR_ORVER_PASSWORD;
+		if (MAX_PASSWORD < password.length() || MIN_PASSWORD < password.length())
+			return ERROR_ORVER_PASSWORD;
 
 		return null;
-
-
-
 
 	}
 }
