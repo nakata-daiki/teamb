@@ -40,6 +40,7 @@ public class LoginController {
 	private ApplicationContext context;
 	@Autowired
 	HttpSession session;
+
 	@Transactional(propagation = Propagation.REQUIRED)
 
 	/**
@@ -52,7 +53,7 @@ public class LoginController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = { Constant. LOGIN},method = RequestMethod.GET)
+	@RequestMapping(value = { Constant.LOGIN }, method = RequestMethod.GET)
 	public @ResponseBody ModelAndView login(@ModelAttribute("LoginModel") LoginModel loginModel,
 			BindingResult result,
 			ModelAndView model,
@@ -61,11 +62,10 @@ public class LoginController {
 
 		// ログイン状態チェック
 		HttpSession session = request.getSession(true);
-		if (!Objects.isNull(session.getAttribute(LOGIN_USER_ID)))  {
+		if (!Objects.isNull(session.getAttribute(LOGIN_USER_ID))) {
 			model.setViewName("redirect:/board");
 			return model;
 		}
-
 
 		// エラーメッセージがあるならモデルにセット
 		if (!Objects.isNull(session.getAttribute(ERROR_MESSAGE))) {
@@ -80,7 +80,7 @@ public class LoginController {
 			loginModel.setPassword(INPUT_PASSWORD);
 		}
 		// 画面表示処理
-		model.addObject("loginModel",loginModel);
+		model.addObject("loginModel", loginModel);
 		model.setViewName("HTML/login");
 		return model;
 	}
@@ -97,41 +97,42 @@ public class LoginController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = { Constant.REGISTLOGIN},  method = RequestMethod.POST)
+	@RequestMapping(value = { Constant.REGISTLOGIN }, method = RequestMethod.POST)
 	public @ResponseBody ModelAndView postLogin(@ModelAttribute("LoginModel") LoginModel loginModel,
 			BindingResult result,
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
 
-
-
 		String userId = loginModel.getUserId();
 		String password = loginModel.getPassword();
 
-//		// 入力内容のチェック（ID、パスワード）
-//		String errorMessage = loginService.validationCheck(loginModel.getUserId(), loginModel.getPassword());
-//		if (StringUtils.isEmpty(errorMessage)) {
-//			loginModel.setMessage(errorMessage);
-//			model.addObject("LoginModel", loginModel);
-//			model.setViewName("HTML/login");
-//			return model;
-//		}
+		//		// 入力内容のチェック（ID、パスワード）
+		//		String errorMessage = loginService.validationCheck(loginModel.getUserId(), loginModel.getPassword());
+		//		if (StringUtils.isEmpty(errorMessage)) {
+		//			loginModel.setMessage(errorMessage);
+		//			model.addObject("LoginModel", loginModel);
+		//			model.setViewName("HTML/login");
+		//			return model;
+		//		}
 		LoginService loginService = context.getBean(LoginService.class);
-
-
+		model.addObject("loginModel", loginModel);
 		// ログイン処理
-		loginService.login(loginModel.getUserId(), loginModel.getPassword(), session);
+		String message = loginService.login(loginModel.getUserId(), loginModel.getPassword(), session);
+		if (!StringUtils.isEmpty(message)) {
 
-		// 画面遷移処理
+			model.setViewName("HTML/login");
 
-		model.addObject("loginModel",loginModel);
-		model.setViewName("HTML/board");
+		} else {
+			// 画面遷移処理
+
+			model.setViewName("HTML/board");
+		}
 		return model;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	@RequestMapping(value = {"Regist/Login"}, params="Regist", method = RequestMethod.POST)
+	@RequestMapping(value = { "Regist/Login" }, params = "Regist", method = RequestMethod.POST)
 	/**
 	 * レジストボタン押下
 	 *

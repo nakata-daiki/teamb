@@ -53,7 +53,7 @@ public class LoginService {
 		}
 
 		// パスワードが一致するか
-		if (members.getPassword().equals(inputPass)) {
+		if (!members.getPassword().equals(inputPass)) {
 			return "パスワードが違う";
 		}
 
