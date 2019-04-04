@@ -19,9 +19,6 @@ import com.hfrontier.teamb.mapper.CommentsMapper;
 import com.hfrontier.teamb.repository.Comments;
 import com.hfrontier.teamb.ui.CommentListModel.CommentsData;
 
-import lombok.Data;
-
-@Data
 @Service
 @Configuration
 
