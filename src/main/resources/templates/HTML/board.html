@@ -46,7 +46,7 @@
                     <li th:unless="${commentList.myComment}" class="list-group-item bg-transparent">
                       <div class="balloon2-left">
                         <span>No.[[${commentList.id}]]</span>
-                        <span class="small"> - [ ID:[[${commentList.userId}]] ] [ 投稿:[[${commentList.createdAt}]] ] [ [[${commentList.countLog}]] 度目 ] </span>
+                        <span class="small"> - [ ID:[[${commentList.userId}]] ] [ 投稿:[[${#dates.format(commentList.createdAt, 'yyyy-MM-dd HH:mm:ss')}]] ] [ [[${commentList.countLog}]] 度目 ] </span>
                         <hr>
                         <p>[[${commentList.comment}]]</p>
                       </div>
