@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hfrontier.teamb.common.constant.Constant;
+import com.hfrontier.teamb.repository.Comments;
+import com.hfrontier.teamb.service.CommentsService;
 import com.hfrontier.teamb.ui.EditScreenModel;
 
 
@@ -33,7 +35,13 @@ public class EditScreenController {
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
+		CommentsService commentservice = context
+				.getBean(CommentsService.class);
+
+		Comments c = commentservice.getComment(editScreenModel.getPostedSerialNumber());
+
 		model.setViewName("HTML/screen");
+		model.addObject("model",c);
 		return model;
 	}
 	@RequestMapping(value = { Constant.SCREEN }, method = RequestMethod.POST)
@@ -43,11 +51,10 @@ public class EditScreenController {
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-        /**
-         * バリデーションチェックを行うメソッド
-         */
-//		public static void doValidationCheck(){
-		model.setViewName("HTML/screen");
+		CommentsService commentservice = context
+				.getBean(CommentsService.class);
+		commentservice.update(editScreenModel.getPostedSerialNumber(), editScreenModel.getComment());
+		model.setViewName("redirect:/commentList");
 		return model;
 
 		}
