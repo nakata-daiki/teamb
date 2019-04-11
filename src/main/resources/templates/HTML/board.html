@@ -33,7 +33,7 @@
                 <h5 class="card-header text-light">BBS</h5>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item list-group-item-action bg-transparent">
-                    <a href="edit.html"><span class="btn btn-outline-warning btn-block">コメント登録</span></a>
+                    <a href="/newPost"><span class="btn btn-outline-warning btn-block">コメント登録</span></a>
                   </li>
                 </ul>
               </div>
@@ -41,16 +41,18 @@
             <div class="col-9">
               <div class="card" style="background-color: rgba(0,0,0,0.5);overflow-y: scroll;height: 80vh;">
                 <div class="card-body">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item bg-transparent">
+                  <ul class="list-group list-group-flush" th:each="commentList : ${commentListModel.list}">
+
+                    <li th:unless="${commentList.myComment}" class="list-group-item bg-transparent">
                       <div class="balloon2-left">
-                        <span>No.1</span>
-                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目] </span>
+                        <span>No.[[${commentList.id}]]</span>
+                        <span class="small"> - [ ID:[[${commentList.userId}]] ] [ 投稿:[[${#dates.format(commentList.createdAt, 'yyyy-MM-dd HH:mm:ss')}]] ] [ [[${commentList.countLog}]] 度目 ] </span>
                         <hr>
-                        <p>こんにちは。これは例です。</p>
+                        <p>[[${commentList.comment}]]</p>
                       </div>
                     </li>
-                    <li class="list-group-item bg-transparent">
+
+                    <!-- <li class="list-group-item bg-transparent">
                       <div class="balloon2-left">
                         <span>No.2</span>
                         <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
@@ -58,48 +60,24 @@
                         <p>こんにちは。これは例です。こんにちは。これは例です。こんにちは。これは例です。こんにちは。これは例です。
                         </p>
                       </div>
-                    </li>
-                    <li class="list-group-item bg-transparent text-right">
+                    </li> -->
+
+                    <li th:if="${commentList.myComment}" class="list-group-item bg-transparent text-right">
                       <div class="balloon2-right">
                         <div class="text-left">
-                          <span>No.3</span>
-                          <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
+                          <span>No.[[${commentList.id}]]</span>
+                          <span class="small"> - [ ID:[[${commentList.userId}]] ] [ 投稿:[[${commentList.createdAt}]] ] [ [[${commentList.countLog}]] 度目 ] </span>
                         </div>
                         <hr>
                         <p class="text-left">
-                          こんにちは。こんにちは。これは例です。これは例です。
-                          <br>
-                          れいです
+                          [[${commentList.comment}]]
                         </p>
                         <hr>
                         <button type="button" class="btn btn-outline-info btn-sm">編集</button>
                         <button type="button" class="btn btn-outline-danger btn-sm">削除</button>
                       </div>
                     </li>
-                    <li class="list-group-item bg-transparent">
-                      <div class="balloon2-left">
-                        <span>No.4</span>
-                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
-                        <hr>
-                        <p>こんにちは。これは例です。</p>
-                      </div>
-                    </li>
-                    <li class="list-group-item bg-transparent">
-                      <div class="balloon2-left">
-                        <span>No.5</span>
-                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
-                        <hr>
-                        <p>こんにちは。これは例です。</p>
-                      </div>
-                    </li>
-                    <li class="list-group-item bg-transparent">
-                      <div class="balloon2-left">
-                        <span>No.5</span>
-                        <span class="small"> - [ID:0012id] [投稿:2020-02-20 12:20:20] [1度目]</span>
-                        <hr>
-                        <p>こんにちは。これは例です。</p>
-                      </div>
-                    </li>
+
                   </ul>
                 </div>
               </div>
@@ -107,8 +85,6 @@
           </div>
         </div>
       </div>
-
-
 
       <!-- containts end -->
       <!-- footer start -->
