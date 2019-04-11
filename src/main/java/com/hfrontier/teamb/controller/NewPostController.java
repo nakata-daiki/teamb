@@ -112,7 +112,7 @@ public class NewPostController {
 			// userIDを元にcommentテーブルから投稿回数を取得
 
 			int countLog = commentservice.getCountLog(userID);
-
+			countLog = countLog+1;
 			/**
 			 * commentテーブルにコメントを登録 作成日はDB登録時に入るようにしたい
 			 */

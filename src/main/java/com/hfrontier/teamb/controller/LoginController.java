@@ -18,8 +18,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hfrontier.teamb.common.constant.Constant;
 import com.hfrontier.teamb.service.LoginService;
 import com.hfrontier.teamb.ui.LoginModel;
 
@@ -36,9 +38,11 @@ public class LoginController {
 
 	@Autowired
 	private ApplicationContext context;
+	@Autowired
+	HttpSession session;
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	@RequestMapping(value = {"Regist/Login"}, method = RequestMethod.GET)
+
 	/**
 	 * ログイン画面
 	 *
@@ -49,17 +53,20 @@ public class LoginController {
 	 * @param response
 	 * @return
 	 */
-	public ModelAndView login(@ModelAttribute("LoginModel") LoginModel loginModel,
+	@RequestMapping(value = { Constant.LOGIN }, method = RequestMethod.GET)
+	public @ResponseBody ModelAndView login(@ModelAttribute("LoginModel") LoginModel loginModel,
 			BindingResult result,
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
 
 		// ログイン状態チェック
-		HttpSession session = request.getSession();
-		if (!Objects.isNull(session.getAttribute(LOGIN_USER_ID)))  {
-			model.setViewName("/to-ko-itiran");
+		HttpSession session = request.getSession(true);
+		if (!Objects.isNull(session.getAttribute(LOGIN_USER_ID))) {
+			model.setViewName("redirect:/board");
+			return model;
 		}
+
 		// エラーメッセージがあるならモデルにセット
 		if (!Objects.isNull(session.getAttribute(ERROR_MESSAGE))) {
 			loginModel.setMessage(ERROR_MESSAGE);
@@ -73,12 +80,13 @@ public class LoginController {
 			loginModel.setPassword(INPUT_PASSWORD);
 		}
 		// 画面表示処理
-		model.addObject(loginModel);
+		model.addObject("loginModel", loginModel);
+		model.setViewName("HTML/login");
 		return model;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	@RequestMapping(value = {"Regist/Login"}, params="Login" , method = RequestMethod.POST)
+
 	/**
 	 * ログインボタン押下
 	 *
@@ -89,34 +97,42 @@ public class LoginController {
 	 * @param response
 	 * @return
 	 */
-	public ModelAndView postLogin(@ModelAttribute("LoginModel") LoginModel loginModel,
+	@RequestMapping(value = { Constant.REGISTLOGIN }, method = RequestMethod.POST)
+	public @ResponseBody ModelAndView postLogin(@ModelAttribute("LoginModel") LoginModel loginModel,
 			BindingResult result,
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
 
+		String userId = loginModel.getUserId();
+		String password = loginModel.getPassword();
+
+		//		// 入力内容のチェック（ID、パスワード）
+		//		String errorMessage = loginService.validationCheck(loginModel.getUserId(), loginModel.getPassword());
+		//		if (StringUtils.isEmpty(errorMessage)) {
+		//			loginModel.setMessage(errorMessage);
+		//			model.addObject("LoginModel", loginModel);
+		//			model.setViewName("HTML/login");
+		//			return model;
+		//		}
 		LoginService loginService = context.getBean(LoginService.class);
-
-		// 入力内容のチェック（ID、パスワード）
-		String errorMessage = loginService.validationCheck(loginModel.getUserId(), loginModel.getPassword());
-		if (StringUtils.isEmpty(errorMessage)) {
-			loginModel.setMessage(errorMessage);
-			model.addObject("LoginModel", loginModel);
-			return model;
-		}
-
-
+		model.addObject("loginModel", loginModel);
 		// ログイン処理
-		loginService.login(loginModel.getUserId(), loginModel.getPassword());
+		String message = loginService.login(loginModel.getUserId(), loginModel.getPassword(), session);
+		if (!StringUtils.isEmpty(message)) {
 
-		// 画面遷移処理
+			model.setViewName("HTML/login");
 
+		} else {
+			// 画面遷移処理
 
+			model.setViewName("HTML/board");
+		}
 		return model;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	@RequestMapping(value = {"Regist/Login"}, params="Regist", method = RequestMethod.POST)
+	@RequestMapping(value = { "Regist/Login" }, params = "Regist", method = RequestMethod.POST)
 	/**
 	 * レジストボタン押下
 	 *
@@ -154,4 +170,5 @@ public class LoginController {
 		model.addObject("LoginModel", loginModel);
 		return model;
 	}
+
 }

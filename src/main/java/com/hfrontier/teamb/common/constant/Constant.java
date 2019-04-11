@@ -4,6 +4,9 @@ public class Constant {
 	// ログイン画面
 	public static final String LOGIN = "/login";
 
+	//ログインボタン押下
+	public static final String REGISTLOGIN = "/registLogin";
+
 	//投稿一覧画面
 	public static final String COMMENTLIST  = "/commentList";
 
