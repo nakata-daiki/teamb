@@ -36,7 +36,7 @@ public class LogoutController {
 		HttpSession session = request.getSession(true);
 		session.invalidate();
 		//ログイン画面に遷移
-		model.setViewName("HTML/login");
+		model.setViewName("redirect:/login");
 		return model;
 	}
 

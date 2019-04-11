@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.hfrontier.teamb.common.constant.Constant;
 import com.hfrontier.teamb.service.LoginService;
@@ -97,7 +98,7 @@ public class LoginController {
 	 * @param response
 	 * @return
 	 */
-	@RequestMapping(value = { Constant.REGISTLOGIN }, method = RequestMethod.POST)
+	@RequestMapping(value = { Constant.REGISTLOGIN }, params = "login", method = RequestMethod.POST)
 	public @ResponseBody ModelAndView postLogin(@ModelAttribute("LoginModel") LoginModel loginModel,
 			BindingResult result,
 			ModelAndView model,
@@ -116,7 +117,7 @@ public class LoginController {
 		//			return model;
 		//		}
 		LoginService loginService = context.getBean(LoginService.class);
-		model.addObject("loginModel", loginModel);
+
 		// ログイン処理
 		String message = loginService.login(loginModel.getUserId(), loginModel.getPassword(), session);
 		if (!StringUtils.isEmpty(message)) {
@@ -126,13 +127,14 @@ public class LoginController {
 		} else {
 			// 画面遷移処理
 
-			model.setViewName("HTML/board");
+			model.setViewName("redirect:/commentList");
 		}
+		model.addObject("loginModel", loginModel);
 		return model;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	@RequestMapping(value = { "Regist/Login" }, params = "Regist", method = RequestMethod.POST)
+
 	/**
 	 * レジストボタン押下
 	 *
@@ -143,31 +145,38 @@ public class LoginController {
 	 * @param response
 	 * @return
 	 */
+	@RequestMapping(value = { Constant.REGISTLOGIN }, params = "regist", method = RequestMethod.POST)
 	public ModelAndView postRegist(@ModelAttribute("LoginModel") LoginModel loginModel,
 			BindingResult result,
 			ModelAndView model,
 			HttpServletRequest request,
-			HttpServletResponse response) {
+			HttpServletResponse response,RedirectAttributes redirect) {
 
 		LoginService loginService = context.getBean(LoginService.class);
 		// 入力内容チェック（ID、パスワード）
 		String errorMessage = loginService.validationCheck(loginModel.getUserId(), loginModel.getPassword());
-		if (StringUtils.isEmpty(errorMessage)) {
+		if (!StringUtils.isEmpty(errorMessage)) {
 			loginModel.setMessage(errorMessage);
-			model.addObject("LoginModel", loginModel);
+			redirect.addAttribute("message",errorMessage);
+			model.setViewName("redirect:/login");
+
 			return model;
 		}
 
 		// 登録処理
 		if (!loginService.regist(loginModel.getUserId(), loginModel.getPassword())) {
 			loginModel.setMessage("既に登録されています");
-			model.addObject("LoginModel", loginModel);
+			redirect.addAttribute("message","既に登録されています");
+			model.setViewName("redirect:/login");
+
 			return model;
 		}
 
 		// 画面遷移処理（リダイレクト）
 		loginModel.setMessage("登録完了しました");
-		model.addObject("LoginModel", loginModel);
+		redirect.addAttribute("message","登録完了しました");
+
+		model.setViewName("redirect:/login");
 		return model;
 	}
 

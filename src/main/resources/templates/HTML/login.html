@@ -17,8 +17,7 @@
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">HFC BBS</a>
         <div class="navbar-right">
-          <span class="navbar-text text-light">hogehoge さん</span>
-          <button type="button" class="btn btn-sm ml-2 btn-outline-light">ログアウト</button>
+
         </div>
       </nav>
       <!-- header end -->
@@ -33,11 +32,11 @@
             <div class="card" style="background-color: rgba(100,100,100,0.5);">
               <div class="card-body">
 
-              <!-- /* <th:block th:if="${loginModel.errorMessage}">
+               <th:block th:if="${loginModel.message}">
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                  <a th:text="${model.errorMessage}"></a>
+                  <a th:text="${loginModel.message}"></a>
                 </div>
-                </th:block> */-->
+                </th:block>
 
                 <form th:action="@{/registLogin}" method="POST">
                   <div class="form-group">

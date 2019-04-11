@@ -8,7 +8,7 @@ public class Constant {
 	public static final String REGISTLOGIN = "/registLogin";
 
 	//投稿一覧画面
-	public static final String COMMENTLIST  = "/commentList";
+	public static final String COMMENTLIST = "/commentList";
 
 	// ログアウト画面
 	public static final String LOGOUT = "/logout";
@@ -16,7 +16,9 @@ public class Constant {
 	//新規投稿画面
 	public static final String NEWPOST = "/newPost";
 
-   //新規投稿画面
+	//新規投稿画面
 	public static final String NEWPOSTREGIST = "/newPostRegist";
+
+	public static final String REGISTMEMBER = "/registMember";
 
 }
