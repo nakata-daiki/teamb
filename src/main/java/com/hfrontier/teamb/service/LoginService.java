@@ -40,7 +40,7 @@ public class LoginService {
 	public String login(String userId, String inputPass,
 			HttpSession session) {
 		// IDが空かどうか
-		if (!StringUtils.isEmpty(userId)) {
+		if (StringUtils.isEmpty(userId)) {
 			return "IDがない";
 		}
 

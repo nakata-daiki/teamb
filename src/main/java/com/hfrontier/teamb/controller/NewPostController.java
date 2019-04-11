@@ -60,7 +60,7 @@ public class NewPostController {
 			HttpServletRequest request, HttpServletResponse response) {
 
 		// セッションからusrIDを取得し、モデルにつめる
-		session.setAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA, "06073");
+
 		String userID = (String) session
 				.getAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA);
 		if (userID != null) {
