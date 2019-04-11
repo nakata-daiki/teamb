@@ -1,6 +1,9 @@
 package com.hfrontier.teamb.controller;
 
+import java.awt.FontFormatException;
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hfrontier.teamb.common.constant.Constant;
+import com.hfrontier.teamb.service.CommentsService;
 import com.hfrontier.teamb.ui.NewPostModel;
 
 @Controller
@@ -37,15 +41,43 @@ public class NewPostController {
 	@RequestMapping(value = { Constant.NEWPOST }, method = RequestMethod.POST)
 	public @ResponseBody ModelAndView PostLogin(
 			@ModelAttribute("NewPostModel") @Valid NewPostModel newPostModel,
-			BindingResult result,
-			ModelAndView model,
-			HttpServletRequest request,
-			HttpServletResponse response) throws IOException {
-        /**
-         * バリデーションチェックを行うメソッド
-         */
-//		public static void doValidationCheck(){
-		model.setViewName("HTML/newpost");
+			BindingResult result, ModelAndView model,
+			HttpServletRequest request, HttpServletResponse response)
+			throws IOException, FontFormatException {
+
+		// バリデーションエラー情報を取得
+		Map<String, String> errorMap = new LinkedHashMap<String, String>();
+		errorMap = doValidationCheck(result, newPostModel);
+
+		// バリデーションエラーがなければコメントをDBに登録
+		if (errorMap.isEmpty()) {
+			// uerIDをモデルから取得
+			String userID = newPostModel.getUserID();
+			// commentをモデルから取得
+			String comment = newPostModel.getComment();
+
+			CommentsService commentservice = context
+					.getBean(CommentsService.class);
+
+			// userIDを元にcommentテーブルから投稿回数を取得
+
+			int countLog = commentservice.getCountLog(userID);
+			countLog = countLog+1;
+			/**
+			 * commentテーブルにコメントを登録 作成日はDB登録時に入るようにしたい
+			 */
+			commentservice.insertComment(userID, countLog, comment);
+
+			// 投稿一覧画面に遷移
+			model.setViewName("HTML/board");
+
+		} else {
+			// エラーがある場合は新規投稿画面を再描画する。
+			model.addObject("errorMap", errorMap);
+			model.addObject("newPostModel", newPostModel);
+			model.setViewName("HTML/newpost");
+
+		}
 		return model;
 
 		}

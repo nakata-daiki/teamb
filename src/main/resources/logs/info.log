@@ -1,0 +1,107 @@
+[2019-04-04 18:54:58,432] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Starting TeambApplication on HFC-025.local with PID 4048 (/Users/HFC-025/nakata_workspace/teamb/target/classes started by HFC-025 in /Users/HFC-025/nakata_workspace/teamb)
+[2019-04-04 18:54:58,433] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : No active profile set, falling back to default profiles: default
+[2019-04-04 18:55:00,050] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat initialized with port(s): 8080 (http)
+[2019-04-04 18:55:00,070] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Initializing ProtocolHandler ["http-nio-8080"]
+[2019-04-04 18:55:00,090] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Starting service [Tomcat]
+[2019-04-04 18:55:00,091] [main] [- INFO] [org.apache.catalina.core.StandardEngine ] : Starting Servlet engine: [Apache Tomcat/9.0.14]
+[2019-04-04 18:55:00,100] [main] [- INFO] [o.a.catalina.core.AprLifecycleListener  ] : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/HFC-025/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2019-04-04 18:55:00,193] [main] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring embedded WebApplicationContext
+[2019-04-04 18:55:00,193] [main] [- INFO] [o.s.web.context.ContextLoader           ] : Root WebApplicationContext: initialization completed in 1689 ms
+[2019-04-04 18:55:00,874] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Initializing ExecutorService 'applicationTaskExecutor'
+[2019-04-04 18:55:01,307] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Starting ProtocolHandler ["http-nio-8080"]
+[2019-04-04 18:55:01,357] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat started on port(s): 8080 (http) with context path ''
+[2019-04-04 18:55:01,360] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Started TeambApplication in 3.371 seconds (JVM running for 4.325)
+[2019-04-04 18:55:40,810] [http-nio-8080-exec-1] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2019-04-04 18:55:40,810] [http-nio-8080-exec-1] [- INFO] [o.s.web.servlet.DispatcherServlet       ] : Initializing Servlet 'dispatcherServlet'
+[2019-04-04 18:55:40,828] [http-nio-8080-exec-1] [- INFO] [o.s.web.servlet.DispatcherServlet       ] : Completed initialization in 18 ms
+[2019-04-04 18:56:07,913] [http-nio-8080-exec-4] [- INFO] [com.zaxxer.hikari.HikariDataSource      ] : HikariPool-1 - Starting...
+[2019-04-04 18:58:17,096] [RMI TCP Connection(2)-127.0.0.1] [- INFO] [inMXBeanRegistrar$SpringApplicationAdmin] : Application shutdown requested.
+[2019-04-04 18:58:17,098] [RMI TCP Connection(2)-127.0.0.1] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Shutting down ExecutorService 'applicationTaskExecutor'
+[2019-04-04 18:58:20,327] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Starting TeambApplication on HFC-025.local with PID 4060 (/Users/HFC-025/nakata_workspace/teamb/target/classes started by HFC-025 in /Users/HFC-025/nakata_workspace/teamb)
+[2019-04-04 18:58:20,328] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : No active profile set, falling back to default profiles: default
+[2019-04-04 18:58:21,211] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat initialized with port(s): 8080 (http)
+[2019-04-04 18:58:21,223] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Initializing ProtocolHandler ["http-nio-8080"]
+[2019-04-04 18:58:21,232] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Starting service [Tomcat]
+[2019-04-04 18:58:21,233] [main] [- INFO] [org.apache.catalina.core.StandardEngine ] : Starting Servlet engine: [Apache Tomcat/9.0.14]
+[2019-04-04 18:58:21,239] [main] [- INFO] [o.a.catalina.core.AprLifecycleListener  ] : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/HFC-025/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2019-04-04 18:58:21,307] [main] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring embedded WebApplicationContext
+[2019-04-04 18:58:21,307] [main] [- INFO] [o.s.web.context.ContextLoader           ] : Root WebApplicationContext: initialization completed in 946 ms
+[2019-04-04 18:58:21,679] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Initializing ExecutorService 'applicationTaskExecutor'
+[2019-04-04 18:58:21,918] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Starting ProtocolHandler ["http-nio-8080"]
+[2019-04-04 18:58:21,941] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat started on port(s): 8080 (http) with context path ''
+[2019-04-04 18:58:21,943] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Started TeambApplication in 1.851 seconds (JVM running for 2.348)
+[2019-04-04 18:58:27,632] [http-nio-8080-exec-1] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2019-04-04 18:58:27,632] [http-nio-8080-exec-1] [- INFO] [o.s.web.servlet.DispatcherServlet       ] : Initializing Servlet 'dispatcherServlet'
+[2019-04-04 18:58:27,636] [http-nio-8080-exec-1] [- INFO] [o.s.web.servlet.DispatcherServlet       ] : Completed initialization in 4 ms
+[2019-04-04 18:58:27,671] [http-nio-8080-exec-1] [- INFO] [com.zaxxer.hikari.HikariDataSource      ] : HikariPool-1 - Starting...
+[2019-04-04 18:58:29,270] [http-nio-8080-exec-1] [- INFO] [com.zaxxer.hikari.HikariDataSource      ] : HikariPool-1 - Start completed.
+[2019-04-04 19:48:28,581] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Starting TeambApplication on HFC-025.local with PID 4295 (/Users/HFC-025/nakata_workspace/teamb/target/classes started by HFC-025 in /Users/HFC-025/nakata_workspace/teamb)
+[2019-04-04 19:48:28,582] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : No active profile set, falling back to default profiles: default
+[2019-04-04 19:48:29,523] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat initialized with port(s): 8080 (http)
+[2019-04-04 19:48:29,537] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Initializing ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:48:29,547] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Starting service [Tomcat]
+[2019-04-04 19:48:29,547] [main] [- INFO] [org.apache.catalina.core.StandardEngine ] : Starting Servlet engine: [Apache Tomcat/9.0.14]
+[2019-04-04 19:48:29,555] [main] [- INFO] [o.a.catalina.core.AprLifecycleListener  ] : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/HFC-025/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2019-04-04 19:48:29,629] [main] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring embedded WebApplicationContext
+[2019-04-04 19:48:29,629] [main] [- INFO] [o.s.web.context.ContextLoader           ] : Root WebApplicationContext: initialization completed in 1012 ms
+[2019-04-04 19:48:30,002] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Initializing ExecutorService 'applicationTaskExecutor'
+[2019-04-04 19:48:30,244] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Starting ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:48:30,263] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Pausing ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:48:30,263] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Stopping service [Tomcat]
+[2019-04-04 19:48:30,276] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Stopping ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:48:30,277] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Destroying ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:48:30,309] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Shutting down ExecutorService 'applicationTaskExecutor'
+[2019-04-04 19:50:19,216] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Starting TeambApplication on HFC-025.local with PID 4305 (/Users/HFC-025/nakata_workspace/teamb/target/classes started by HFC-025 in /Users/HFC-025/nakata_workspace/teamb)
+[2019-04-04 19:50:19,219] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : No active profile set, falling back to default profiles: default
+[2019-04-04 19:50:20,058] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat initialized with port(s): 8080 (http)
+[2019-04-04 19:50:20,070] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Initializing ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:50:20,079] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Starting service [Tomcat]
+[2019-04-04 19:50:20,080] [main] [- INFO] [org.apache.catalina.core.StandardEngine ] : Starting Servlet engine: [Apache Tomcat/9.0.14]
+[2019-04-04 19:50:20,087] [main] [- INFO] [o.a.catalina.core.AprLifecycleListener  ] : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/HFC-025/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2019-04-04 19:50:20,214] [main] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring embedded WebApplicationContext
+[2019-04-04 19:50:20,214] [main] [- INFO] [o.s.web.context.ContextLoader           ] : Root WebApplicationContext: initialization completed in 961 ms
+[2019-04-04 19:50:20,613] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Initializing ExecutorService 'applicationTaskExecutor'
+[2019-04-04 19:50:20,855] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Starting ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:50:20,874] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Pausing ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:50:20,874] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Stopping service [Tomcat]
+[2019-04-04 19:50:20,887] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Stopping ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:50:20,887] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Destroying ProtocolHandler ["http-nio-8080"]
+[2019-04-04 19:50:20,899] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Shutting down ExecutorService 'applicationTaskExecutor'
+[2019-04-04 21:04:19,260] [RMI TCP Connection(2)-127.0.0.1] [- INFO] [inMXBeanRegistrar$SpringApplicationAdmin] : Application shutdown requested.
+[2019-04-04 21:04:19,262] [RMI TCP Connection(2)-127.0.0.1] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Shutting down ExecutorService 'applicationTaskExecutor'
+[2019-04-04 21:04:19,262] [RMI TCP Connection(2)-127.0.0.1] [- INFO] [com.zaxxer.hikari.HikariDataSource      ] : HikariPool-1 - Shutdown initiated...
+[2019-04-04 21:04:19,269] [RMI TCP Connection(2)-127.0.0.1] [- INFO] [com.zaxxer.hikari.HikariDataSource      ] : HikariPool-1 - Shutdown completed.
+[2019-04-11 18:55:59,298] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Starting TeambApplication on HFC-025.local with PID 19787 (/Users/HFC-025/nakata_workspace/teamb/target/classes started by HFC-025 in /Users/HFC-025/nakata_workspace/teamb)
+[2019-04-11 18:55:59,298] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : No active profile set, falling back to default profiles: default
+[2019-04-11 18:56:01,057] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat initialized with port(s): 8080 (http)
+[2019-04-11 18:56:01,084] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Initializing ProtocolHandler ["http-nio-8080"]
+[2019-04-11 18:56:01,096] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Starting service [Tomcat]
+[2019-04-11 18:56:01,096] [main] [- INFO] [org.apache.catalina.core.StandardEngine ] : Starting Servlet engine: [Apache Tomcat/9.0.14]
+[2019-04-11 18:56:01,104] [main] [- INFO] [o.a.catalina.core.AprLifecycleListener  ] : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/HFC-025/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2019-04-11 18:56:01,223] [main] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring embedded WebApplicationContext
+[2019-04-11 18:56:01,224] [main] [- INFO] [o.s.web.context.ContextLoader           ] : Root WebApplicationContext: initialization completed in 1859 ms
+[2019-04-11 18:56:02,013] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Initializing ExecutorService 'applicationTaskExecutor'
+[2019-04-11 18:56:02,459] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Starting ProtocolHandler ["http-nio-8080"]
+[2019-04-11 18:56:02,510] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat started on port(s): 8080 (http) with context path ''
+[2019-04-11 18:56:02,513] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Started TeambApplication in 3.749 seconds (JVM running for 5.388)
+[2019-04-11 18:58:17,478] [http-nio-8080-exec-1] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring DispatcherServlet 'dispatcherServlet'
+[2019-04-11 18:58:17,478] [http-nio-8080-exec-1] [- INFO] [o.s.web.servlet.DispatcherServlet       ] : Initializing Servlet 'dispatcherServlet'
+[2019-04-11 18:58:17,497] [http-nio-8080-exec-1] [- INFO] [o.s.web.servlet.DispatcherServlet       ] : Completed initialization in 19 ms
+[2019-04-11 18:58:17,576] [http-nio-8080-exec-1] [- INFO] [com.zaxxer.hikari.HikariDataSource      ] : HikariPool-1 - Starting...
+[2019-04-11 18:58:19,307] [http-nio-8080-exec-1] [- INFO] [com.zaxxer.hikari.HikariDataSource      ] : HikariPool-1 - Start completed.
+[2019-04-11 19:01:46,314] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : Starting TeambApplication on HFC-025.local with PID 19808 (/Users/HFC-025/nakata_workspace/teamb/target/classes started by HFC-025 in /Users/HFC-025/nakata_workspace/teamb)
+[2019-04-11 19:01:46,315] [main] [- INFO] [com.hfrontier.teamb.TeambApplication    ] : No active profile set, falling back to default profiles: default
+[2019-04-11 19:01:47,157] [main] [- INFO] [o.s.b.w.embedded.tomcat.TomcatWebServer ] : Tomcat initialized with port(s): 8080 (http)
+[2019-04-11 19:01:47,169] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Initializing ProtocolHandler ["http-nio-8080"]
+[2019-04-11 19:01:47,177] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Starting service [Tomcat]
+[2019-04-11 19:01:47,178] [main] [- INFO] [org.apache.catalina.core.StandardEngine ] : Starting Servlet engine: [Apache Tomcat/9.0.14]
+[2019-04-11 19:01:47,185] [main] [- INFO] [o.a.catalina.core.AprLifecycleListener  ] : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [/Users/HFC-025/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.]
+[2019-04-11 19:01:47,255] [main] [- INFO] [o.a.c.c.C.[Tomcat].[localhost].[/]      ] : Initializing Spring embedded WebApplicationContext
+[2019-04-11 19:01:47,255] [main] [- INFO] [o.s.web.context.ContextLoader           ] : Root WebApplicationContext: initialization completed in 906 ms
+[2019-04-11 19:01:47,625] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Initializing ExecutorService 'applicationTaskExecutor'
+[2019-04-11 19:01:47,873] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Starting ProtocolHandler ["http-nio-8080"]
+[2019-04-11 19:01:47,892] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Pausing ProtocolHandler ["http-nio-8080"]
+[2019-04-11 19:01:47,892] [main] [- INFO] [o.apache.catalina.core.StandardService  ] : Stopping service [Tomcat]
+[2019-04-11 19:01:47,905] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Stopping ProtocolHandler ["http-nio-8080"]
+[2019-04-11 19:01:47,905] [main] [- INFO] [o.a.coyote.http11.Http11NioProtocol     ] : Destroying ProtocolHandler ["http-nio-8080"]
+[2019-04-11 19:01:47,953] [main] [- INFO] [o.s.s.concurrent.ThreadPoolTaskExecutor ] : Shutting down ExecutorService 'applicationTaskExecutor'
