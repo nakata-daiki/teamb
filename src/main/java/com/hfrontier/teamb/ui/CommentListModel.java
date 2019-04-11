@@ -23,6 +23,7 @@ public class CommentListModel {
 		}
 
 	}
+	public String userId;
 
 	public List<CommentsData> getList() {
 		return list;

@@ -119,13 +119,13 @@ public class NewPostController {
 			commentservice.insertComment(userID, countLog, comment);
 
 			// 投稿一覧画面に遷移
-			model.setViewName("HTML/board");
+			model.setViewName("redirect:/commentList");
 
 		} else {
 			// エラーがある場合は新規投稿画面を再描画する。
 			model.addObject("errorMap", errorMap);
 			model.addObject("newPostModel", newPostModel);
-			model.setViewName("HTML/newpost");
+			model.setViewName("/newpost");
 
 		}
 		return model;

@@ -18,10 +18,10 @@
       <!-- header start -->
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">HFC BBS</a>
-        <div class="navbar-right">
-          <span class="navbar-text text-light">hogehoge さん</span>
-          <button type="button" class="btn btn-sm ml-2 btn-outline-light">ログアウト</button>
-        </div>
+          <form  method="get" th:action="@{/logout}">
+        <span class="navbar-text text-light" th:text="|${commentListModel.userId}さん|"></span>
+          <button type="submit" class="btn btn-sm ml-2 btn-outline-light">ログアウト</button>
+         </form>
       </nav>
       <!-- header end -->
       <!-- containts start -->
@@ -74,7 +74,7 @@
                         </p>
                         <hr>
                         <button type="button" class="btn btn-outline-info btn-sm">編集</button>
-                        <button type="button" class="btn btn-outline-danger btn-sm">削除</button>
+
                       </div>
                     </li>
 
