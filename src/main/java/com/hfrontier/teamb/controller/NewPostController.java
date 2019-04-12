@@ -7,12 +7,14 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hfrontier.teamb.common.constant.Constant;
+import com.hfrontier.teamb.common.constant.SessionKeyConstant;
+import com.hfrontier.teamb.common.validation.Validator;
 import com.hfrontier.teamb.service.CommentsService;
 import com.hfrontier.teamb.ui.NewPostModel;
 
@@ -47,7 +51,7 @@ public class NewPostController {
 			HttpServletRequest request, HttpServletResponse response) {
 
 		// セッションからusrIDを取得し、モデルにつめる
-
+		HttpSession session = request.getSession(true);
 		String userID = (String) session
 				.getAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA);
 		if (userID != null) {
@@ -105,6 +109,39 @@ public class NewPostController {
 		return model;
 
 		}
+
+	/**
+	 * バリデーションチェック
+	 *
+	 * @param result
+	 * @param newPostModel
+	 * @return
+	 * @throws IOException
+	 * @throws FontFormatException
+	 */
+	private Map<String, String> doValidationCheck(BindingResult result,
+			@Valid NewPostModel newPostModel) throws FontFormatException,
+			IOException {
+		Map<String, String> errorMap = new LinkedHashMap<String, String>();
+
+		// コメントのバリデーションチェック
+		FieldError commentError = result.getFieldError("comment");
+
+		if (commentError != null) {
+			errorMap.put("comment", commentError.getDefaultMessage());
+		}
+		String comment = newPostModel.getComment();
+		if (!Validator.judgeFullWidthCharacter(comment)) {
+			errorMap.put("comment", "コメントを全角で入力してください");
+		}
+//		if (!Validator.checkPlatformDependentCharacters(comment)) {
+//			errorMap.put("comment", "コメントに環境依存文字が使用されています");
+//
+//		}
+
+		return errorMap;
+
+	}
 
 	}
 

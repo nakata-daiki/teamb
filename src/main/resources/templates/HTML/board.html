@@ -63,6 +63,7 @@
                     </li> -->
 
                     <li th:if="${commentList.myComment}" class="list-group-item bg-transparent text-right">
+
                       <div class="balloon2-right">
                         <div class="text-left">
                           <span>No.[[${commentList.id}]]</span>
@@ -73,7 +74,10 @@
                           [[${commentList.comment}]]
                         </p>
                         <hr>
-                        <button type="button" class="btn btn-outline-info btn-sm">編集</button>
+                        <a herf="/screen">
+                        	<input type="hidden" value="${coomentList.id}">
+                        	<button type="button" class="btn btn-outline-info btn-sm">編集</button>
+                        </a>
 
                       </div>
                     </li>

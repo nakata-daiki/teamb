@@ -63,6 +63,17 @@ public class CommentsService {
     }
 
     /**
+     * 投稿更新
+     */
+    public void updateComments(Integer id, String comment) {
+    	Comments comments = new Comments();
+    	comments.setId(id);
+    	comments.setComment(comment);
+    	commentsMapper.updateByPrimaryKeySelective(comments);
+
+    }
+
+    /**
      * コメント登録
      *
      * @param comments
@@ -89,6 +100,19 @@ public class CommentsService {
         }
         return list;
     }
+
+    /**
+     * コメント取得
+     *
+     */
+    public Comments getComment(Integer id) {
+    	Comments comment = new Comments();
+    	comment = commentsMapper.selectByPrimaryKey(id);
+    	return comment;
+    }
+
+
+
 
 }
 

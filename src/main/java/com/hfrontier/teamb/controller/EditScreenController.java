@@ -35,15 +35,17 @@ public class EditScreenController {
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) {
+		int id = Integer.parseInt(editScreenModel.getPostedSerialNumber()) ;
 		CommentsService commentservice = context
 				.getBean(CommentsService.class);
 
-		Comments c = commentservice.getComment(editScreenModel.getPostedSerialNumber());
+		Comments c = commentservice.getComment(id);
 
 		model.setViewName("HTML/screen");
 		model.addObject("model",c);
 		return model;
 	}
+
 	@RequestMapping(value = { Constant.SCREEN }, method = RequestMethod.POST)
 	public @ResponseBody ModelAndView PostScreen(
 			@ModelAttribute("EditScreenModel") @Valid EditScreenModel editScreenModel,
@@ -51,9 +53,10 @@ public class EditScreenController {
 			ModelAndView model,
 			HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
+		int id = Integer.parseInt(editScreenModel.getPostedSerialNumber()) ;
 		CommentsService commentservice = context
 				.getBean(CommentsService.class);
-		commentservice.update(editScreenModel.getPostedSerialNumber(), editScreenModel.getComment());
+		commentservice.updateComments(id, editScreenModel.getComment());
 		model.setViewName("redirect:/commentList");
 		return model;
 

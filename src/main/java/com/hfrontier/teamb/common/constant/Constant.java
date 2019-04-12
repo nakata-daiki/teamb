@@ -19,11 +19,9 @@ public class Constant {
 	//新規投稿画面
 	public static final String NEWPOSTREGIST = "/newPostRegist";
 
-<<<<<<< HEAD
 	// コメント編集画面
 	public static final String SCREEN  = "/screen";
-=======
+
 	public static final String REGISTMEMBER = "/registMember";
 
->>>>>>> master
 }
