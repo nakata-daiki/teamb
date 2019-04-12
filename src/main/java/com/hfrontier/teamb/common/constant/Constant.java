@@ -14,9 +14,6 @@ public class Constant {
 	public static final String LOGOUT = "/logout";
 
 	//新規投稿画面
-	public static final String NEWPOST = "/newPost";
-
-	//新規投稿画面
 	public static final String NEWPOSTREGIST = "/newPostRegist";
 
 	// コメント編集画面

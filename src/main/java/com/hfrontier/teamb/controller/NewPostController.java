@@ -66,7 +66,7 @@ public class NewPostController {
 		model.addObject("newPostModel", newPostModel);
 		return model;
 	}
-	@RequestMapping(value = { Constant.NEWPOST }, method = RequestMethod.POST)
+	@RequestMapping(value = { Constant.NEWPOSTREGIST }, method = RequestMethod.POST)
 	public @ResponseBody ModelAndView PostLogin(
 			@ModelAttribute("NewPostModel") @Valid NewPostModel newPostModel,
 			BindingResult result, ModelAndView model,
@@ -103,7 +103,7 @@ public class NewPostController {
 			// エラーがある場合は新規投稿画面を再描画する。
 			model.addObject("errorMap", errorMap);
 			model.addObject("newPostModel", newPostModel);
-			model.setViewName("/newpost");
+			model.setViewName("/newPostRegist");
 
 		}
 		return model;
