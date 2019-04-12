@@ -34,8 +34,12 @@ public class CommentListController {
         CommentListModel commentListModel = new CommentListModel();
         //サービスからとってきたコメントリストをモデルに詰める
         commentListModel.setList(commentservice.getCommentList(session));
-        model.addObject("commentListModel", commentListModel);
+        HttpSession session = request.getSession(true);
+
+        commentListModel.setUserId(String.valueOf(session.getAttribute("LOGIN_MEMBER_DATA")));
         model.setViewName("HTML/board");
+        model.addObject("commentListModel", commentListModel);
+
         return model;
     }
 }

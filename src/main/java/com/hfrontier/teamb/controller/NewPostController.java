@@ -29,13 +29,37 @@ public class NewPostController {
 	@Autowired
 	private AbstractApplicationContext context;
 
-	@RequestMapping(value = { Constant.NEWPOST }, method = RequestMethod.GET)
-	public @ResponseBody ModelAndView GetLogin(@ModelAttribute("NewPostModel") @Valid  NewPostModel newPostModel,
-			BindingResult result,
-			ModelAndView model,
-			HttpServletRequest request,
-			HttpServletResponse response) {
-		model.setViewName("HTML/newpost");
+	/**
+	 * 新規投稿画面(初期)
+	 *
+	 * @param newPostModel
+	 * @param result
+	 * @param model
+	 * @param request
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping(value = { Constant.NEWPOST }, method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public @ResponseBody ModelAndView GetLogin(
+			@ModelAttribute("NewPostModel") @Valid NewPostModel newPostModel,
+			BindingResult result, ModelAndView model,
+			HttpServletRequest request, HttpServletResponse response) {
+
+		// セッションからusrIDを取得し、モデルにつめる
+
+		String userID = (String) session
+				.getAttribute(SessionKeyConstant.LOGIN_MEMBER_DATA);
+		if (userID != null) {
+			newPostModel.setUserID(userID);
+			model.setViewName("HTML/newpost");
+		} else {
+			// セッションからuserIDを取得できない場合はログイン画面に遷移
+			//model.setViewName("HTML/login");
+			model.setViewName("HTML/newpost");
+		}
+
+		model.addObject("newPostModel", newPostModel);
 		return model;
 	}
 	@RequestMapping(value = { Constant.NEWPOST }, method = RequestMethod.POST)
@@ -69,13 +93,13 @@ public class NewPostController {
 			commentservice.insertComment(userID, countLog, comment);
 
 			// 投稿一覧画面に遷移
-			model.setViewName("HTML/board");
+			model.setViewName("redirect:/commentList");
 
 		} else {
 			// エラーがある場合は新規投稿画面を再描画する。
 			model.addObject("errorMap", errorMap);
 			model.addObject("newPostModel", newPostModel);
-			model.setViewName("HTML/newpost");
+			model.setViewName("/newpost");
 
 		}
 		return model;

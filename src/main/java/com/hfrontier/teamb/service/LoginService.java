@@ -40,7 +40,7 @@ public class LoginService {
 	public String login(String userId, String inputPass,
 			HttpSession session) {
 		// IDが空かどうか
-		if (!StringUtils.isEmpty(userId)) {
+		if (StringUtils.isEmpty(userId)) {
 			return "IDがない";
 		}
 
@@ -93,10 +93,10 @@ public class LoginService {
 		if (StringUtils.isEmpty(password))
 			return ERROR_NOT_PASSWORD;
 		// ID文字数超過
-		if (MAX_USER_ID < userId.length() || MIN_USER_ID < userId.length())
+		if (MAX_USER_ID <userId.length() || MIN_USER_ID >userId.length())
 			return ERROR_ORVER_USER_ID;
 		// パスワード文字数超過
-		if (MAX_PASSWORD < password.length() || MIN_PASSWORD < password.length())
+		if (MAX_PASSWORD < password.length() || MIN_PASSWORD >password.length())
 			return ERROR_ORVER_PASSWORD;
 
 		return null;

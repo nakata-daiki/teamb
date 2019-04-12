@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- incloud jquery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <!-- incloud bootstrap files from cdn-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <title>hfc lab board</title>
+    <link href="style.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="fruid-container">
+      <!-- header start -->
+      <nav class="navbar navbar-dark bg-dark fixed-top">
+        <a class="navbar-brand" href="#">HFC BBS</a>
+        <div class="navbar-right">
+
+        </div>
+      </nav>
+      <!-- header end -->
+
+      <!-- containts start -->
+      <div class="jumbotron jumbotron-extend randding">
+        <div class="container-fluid jumbotron-container">
+          <div class="col-4">
+            <h1 class="text-light">BBS Login</h1>
+          </div>
+          <div class="col-5">
+            <div class="card" style="background-color: rgba(100,100,100,0.5);">
+              <div class="card-body">
+
+               <th:block th:if="${loginModel.message}">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                  <a th:text="${loginModel.message}"></a>
+                </div>
+                </th:block>
+
+                <form th:action="@{/registLogin}" method="POST">
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1"><span class="text-light">ユーザーID</span></label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1" th:field="${loginModel.userId}"  placeholder="IDを入力してください">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1"><span class="text-light">パスワード</span></label>
+                    <input type="password" class="form-control" id="exampleFormControlInput1" th:field="${loginModel.password}" placeholder="パスワードを入力してください">
+                  </div>
+                  <input type="submit" name="login" value="Login"class="btn btn-outline-light"></input>
+                  <input type="submit" name="regist" value="Regist"class="btn btn-outline-left"></input>
+                 </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- containts end -->
+
+      <!-- footer start -->
+      <footer class="text-right bg-dark fixed-bottom">
+        <span class="text-light text-muted small" style="padding-right:1em">@Created by hfc-lab, Designed by system-lab S.Fujisawa</span>
+      </footer>
+      <!-- footer end -->
+    </div>
+  </body>
+</html>
