@@ -103,7 +103,7 @@ public class NewPostController {
 			// エラーがある場合は新規投稿画面を再描画する。
 			model.addObject("errorMap", errorMap);
 			model.addObject("newPostModel", newPostModel);
-			model.setViewName("/newPostRegist");
+			model.setViewName("HTML/newpost");
 
 		}
 		return model;
