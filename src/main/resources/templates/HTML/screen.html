@@ -10,7 +10,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <link href="font/css/open-iconic-bootstrap.css" rel="stylesheet">
-    <link href="style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <title>hfc lab board</title>
   </head>
   <body>
@@ -19,7 +19,7 @@
       <nav class="navbar navbar-dark bg-dark fixed-top">
         <a class="navbar-brand" href="#">HFC BBS</a>
         <form  method="get" th:action="@{/logout}">
-        <span class="navbar-text text-light" th:text="|${EditScreenModel.userID}さん|"></span>
+        <span class="navbar-text text-light" th:text="|${model.userId}さん|"></span>
           <button type="submit" class="btn btn-sm ml-2 btn-outline-light">ログアウト</button>
          </form>
       </nav>
@@ -33,7 +33,7 @@
                 <h5 class="card-header text-light">編集</h5>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item list-group-item-action bg-transparent">
-                    <a href="board.html"><span class="btn btn-outline-warning btn-block">BBSへ戻る</span></a>
+                    <a href="/commentList"><span class="btn btn-outline-warning btn-block">BBSへ戻る</span></a>
                   </li>
                 </ul>
               </div>
