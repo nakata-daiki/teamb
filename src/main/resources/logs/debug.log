@@ -28029,3 +28029,13 @@ java.io.EOFException: null
 [2019-04-12 13:32:44,449] [http-nio-8080-exec-3] [-DEBUG] [o.a.coyote.http11.Http11NioProtocol     ] : Pushed Processor [org.apache.coyote.http11.Http11Processor@ac04caa]
 [2019-04-12 13:33:32,901] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : Start expire sessions StandardManager at 1555043612901 sessioncount 0
 [2019-04-12 13:33:32,901] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : End expire sessions StandardManager processingTime 0 expired sessions: 0
+[2019-04-12 13:34:32,912] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : Start expire sessions StandardManager at 1555043672912 sessioncount 0
+[2019-04-12 13:34:32,913] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : End expire sessions StandardManager processingTime 1 expired sessions: 0
+[2019-04-12 13:35:32,920] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : Start expire sessions StandardManager at 1555043732919 sessioncount 0
+[2019-04-12 13:35:32,920] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : End expire sessions StandardManager processingTime 1 expired sessions: 0
+[2019-04-12 13:36:32,929] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : Start expire sessions StandardManager at 1555043792929 sessioncount 0
+[2019-04-12 13:36:32,929] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : End expire sessions StandardManager processingTime 0 expired sessions: 0
+[2019-04-12 13:37:32,944] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : Start expire sessions StandardManager at 1555043852944 sessioncount 0
+[2019-04-12 13:37:32,944] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : End expire sessions StandardManager processingTime 0 expired sessions: 0
+[2019-04-12 13:38:32,963] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : Start expire sessions StandardManager at 1555043912963 sessioncount 0
+[2019-04-12 13:38:32,963] [Catalina-utility-1] [-DEBUG] [org.apache.catalina.session.ManagerBase ] : End expire sessions StandardManager processingTime 0 expired sessions: 0

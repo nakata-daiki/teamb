@@ -1,6 +1,6 @@
 package com.hfrontier.teamb.common.validation;
 
-import com.mysql.cj.util.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public final class Validator {
 	private Validator() {
@@ -14,7 +14,7 @@ public final class Validator {
 	public static boolean judgeFullWidthCharacter(String comment) {
 
 		char[] chars = comment.toCharArray();
-		if (StringUtils.isNullOrEmpty(comment)) {
+		if (StringUtils.isEmpty(comment)) {
 			return false;
 		}
 		for (int i = 0; i < chars.length; i++) {
@@ -29,7 +29,7 @@ public final class Validator {
 	 * 空文字チェック
 	 */
 	public static boolean judgeNullCharacter(String comment) {
-		if (StringUtils.isNullOrEmpty(comment)) {
+		if (StringUtils.isEmpty(comment)) {
 			return false;
 		}
 		return true;
